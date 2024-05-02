@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo">LOGO PICT PUNE</div>
+        <ul>
+            <a href="/W3/index.html">
+                <i class="fas fa-home fa"></i> Home</a>
+            <a href="/W3/regsiter.html"> <i class="fas fa-user-plus fa"></i> Register</a>
+            <a href="/W3/data-list.html"> <i class="fas fa-list fa"></i> Data-list
+            </a>
+        </ul>
+    </div>
+
+    <div class="container">
+        <form id="Registerform">
+
+            <h2>User Registration</h2>
+
+            <label for="email">Email* </label>
+            <input type="email" placeholder="Enter valid email" id="email" required>
+            <span id="emailError" class="error"></span>
+
+            <label for="Password">Password* </label>
+            <input type="text" placeholder="Enter Password" id="Password" required>
+            <span id="PasswordError" class="error"></span>
+
+            <label for="confirm">Confirm Password* </label>
+            <input type="text" placeholder="Confirm Password" id="confirm" required>
+            <span id="confirmPasswordError" class="error"></span>
+
+            <label for="dob">Date of Birth* </label>
+            <input type="date" id="dob" required>
+
+            <button type="submit">Submit</button>
+            <button type="reset">Reset </button>
+
+        </form>
+    </div>
+
+
+    <script>
+        document.getElementById('Registerform').addEventListener('submit', function(event) {
+
+            event.preventDefault();
+
+            var email = document.getElementById('email').value;
+            var Password = document.getElementById('Password').value;
+            var confirmPassword = document.getElementById('confirm').value;
+            var dob = document.getElementById("dob").value;
+
+            var emailError = document.getElementById('emailError');
+            var PasswordError = document.getElementById('PasswordError');
+            var confirmPasswordError = document.getElementById('confirmPasswordError');
+
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+            if (!emailRegex.test(email)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                emailError.style.color = 'red';
+            } else {
+                emailError.textContent = '';
+            }
+
+            if (Password.length < 8) {
+                PasswordError.textContent = "pass len";
+            } else {
+                PasswordError.textContent = "";
+            }
+
+            if (Password !== confirmPassword) {
+                confirmPasswordError.textContent = "same pass";
+            } else {
+                confirmPasswordError.textContent = "";
+            }
+
+            if ((emailRegex.test(email) && Password.length >= 8 && Password === confirmPassword)) {
+                var userData = {
+                    email,
+                    Password,
+                    dob,
+                };
+
+                var usersData = JSON.parse(localStorage.getItem('users')) || [];
+
+                usersData.push(userData);
+                localStorage.setItem('users', JSON.stringify(usersData));
+
+                alert("submission successful");
+                document.getElementById("Registerform").reset();
+            }
+
+        });
+
+        document.getElementById('email').addEventListener('input', function() {
+            document.getElementById('emailError').textContent = "";
+        });
+
+        document.getElementById('Password').addEventListener('input', function() {
+            document.getElementById('PasswordError').textContent = "";
+        });
+
+        document.getElementById('confirm').addEventListener('input', function() {
+            document.getElementById('confirmPasswordError').textContent = "";
+        });
+    </script>
+</body>
+
+</html>

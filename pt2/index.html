@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <link rel="stylesheet" href="/pt2/styles.css">
+</head>
+<body>
+    <div class="container">
+        <form>
+            <table>
+                <tr>
+                    <td><label for="name">Enter Name:</label></td>
+                    <td><input type="text" id="name" name="name"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Enter Password:</label></td>
+                    <td><input type="password" id="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Enter Address:</label></td>
+                    <td><input type="text" id="address" name="address"></td>
+                </tr>
+                <tr>
+                    <td><label for="game">Select Game:</label></td>
+                    <td>
+                        <select id="game" name="game">
+                            <option value="hockey">Hockey</option>
+                            <option value="football">Football</option>
+                            <option value="badminton">Badminton</option>
+                            <option value="cricket">Cricket</option>
+                            <option value="volleyball">Volleyball</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="gender">Gender:</label></td>
+                    <td>
+                        <select id="gender" name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="age">Select ur age:</label></td>
+                    <td><input type="number" id="age" name="age"></td>
+                </tr>
+                <tr>
+                    <td><label for="file">Choose File:</label></td>
+                    <td><input type="file" id="file" name="file"></td>
+                </tr>
+            </table>
+            <br>
+            <input type="button" id="submit" value="Submit Form" onclick="submitForm()">
+            <input type="reset" value="Reset">
+        </form>
+        <div id="clickme" style="display: none;">Click Me</div>
+        <div id="resetdiv" style="display: none;">Reset</div>
+    </div>
+</body>
+</html>

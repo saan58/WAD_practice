@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2>Add New Song</h2>
+    <form action="/add" method="POST">
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name"><br><br>
+
+        <label for="Roll">Roll:</label>
+        <input type="text" id="Roll_No" name="Roll_No"><br><br>
+
+        <label for="WAD">WAD:</label>
+        <input type="text" id="WAD_Marks" name="WAD_Marks"><br><br>
+
+        <label for="DSBDA">DSBDA:</label>
+        <input type="text" id="DSBDA_Marks" name="DSBDA_Marks"><br><br>
+
+        <label for="CNS">CNS:</label>
+        <input type="text" id="CNS_Marks" name="CNS_Marks"><br><br>
+
+        <label for="CC">CC:</label>
+        <input type="text" id="CC_Marks" name="CC_Marks"><br><br>
+
+        <label for="AI">AI:</label>
+        <input type="text" id="AI_marks" name="AI_marks"><br><br>
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    <div class="container">
+        <h1>Student Details</h1>
+        <% if ( students.length>0 ) { %>
+            <p>Total Count:
+                <%= students.length %>
+            </p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>WAD</th>
+                    <th>DSBDA</th>
+                    <th>CNS</th>
+                    <th>CC</th>
+                    <th>AI</th>
+                    <th>Action</th>
+                </tr>
+                <% students.forEach(function(student) { %>
+                    <tr>
+                        <td>
+                            <%= student.Name %>
+                        </td>
+                        <td>
+                            <%= student.Roll_No %>
+                        </td>
+                        <td>
+                            <%= student.WAD_Marks %>
+                        </td>
+                        <td>
+                            <%= student.DSBDA_Marks %>
+                        </td>
+                        <td>
+                            <%= student.CNS_Marks %>
+                        </td>
+                        <td>
+                            <%= student.CC_Marks %>
+                        </td>
+                        <td>
+                            <%= student.AI_marks %>
+                        </td>
+                        <td>
+                            <form action="/delete/<%= student._id %>" method="post">
+                                <button type="submit">Delete</button>
+                            </form>
+                            <form action="/update/<%= student._id %>" method="post">
+                                <button type="submit">Update by 10</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+            <% } else { %>
+                <p>No students found</p>
+                <% } %>
+    </div>
+</body>
+
+</html>

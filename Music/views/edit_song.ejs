@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Song</title>
+</head>
+
+<body>
+    <h1>Edit Song</h1>
+    <form action="/update/<%= song._id %>" method="POST">
+        <label for="Songname">Song Name:</label>
+        <input type="text" id="Songname" name="Songname" value="<%= song.Songname %>"><br><br>
+        <label for="Film">Film Name:</label>
+        <input type="text" id="Film" name="Film" value="<%= song.Film %>"><br><br>
+        <label for="Music_director">Music Director:</label>
+        <input type="text" id="Music_director" name="Music_director" value="<%= song.Music_director %>"><br><br>
+        <label for="Singer">Singer:</label>
+        <input type="text" id="Singer" name="Singer" value="<%= song.Singer %>"><br><br>
+        <label for="Actor">Actor:</label>
+        <input type="text" id="Actor" name="Actor" value="<%= song.Actor %>"><br><br>
+        <label for="Actress">Actress:</label>
+        <input type="text" id="Actress" name="Actress" value="<%= song.Actress %>"><br><br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+
+</html>

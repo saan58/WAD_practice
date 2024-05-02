@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Details</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Add New Song</h2>
+    <form action="/add" method="POST">
+        <label for="Songname">Song Name:</label>
+        <input type="text" id="Songname" name="Songname"><br><br>
+        <label for="Film">Film Name:</label>
+        <input type="text" id="Film" name="Film"><br><br>
+        <label for="Music_director">Music Director:</label>
+        <input type="text" id="Music_director" name="Music_director"><br><br>
+        <label for="Singer">Singer:</label>
+        <input type="text" id="Singer" name="Singer"><br><br>
+        <% if (songs[0].Actor !== undefined) { %>
+            <label for="Actor">Actor:</label>
+            <input type="text" id="Actor" name="Actor"><br><br>
+            <% } %>
+                <% if (songs[0].Actress !== undefined) { %>
+                    <label for="Actress">Actress:</label>
+                    <input type="text" id="Actress" name="Actress"><br><br>
+                    <% } %>
+                        <button type="submit">Add Song</button>
+    </form>
+
+    <h1>Song Details</h1>
+    <% if (songs.length > 0) { %>
+        <p>Total Songs:
+            <%= songs.length %>
+        </p>
+        <table>
+            <tr>
+                <th>Song Name</th>
+                <th>Film Name</th>
+                <th>Music Director</th>
+                <th>Singer</th>
+                <% if (songs[0].Actor !== undefined) { %>
+                    <th>Actor</th>
+                    <% } %>
+                        <% if (songs[0].Actress !== undefined) { %>
+                            <th>Actress</th>
+                            <% } %>
+                                <th>Actions</th>
+            </tr>
+            <% songs.forEach(function(song) { %>
+                <tr>
+                    <td>
+                        <%= song.Songname %>
+                    </td>
+                    <td>
+                        <%= song.Film %>
+                    </td>
+                    <td>
+                        <%= song.Music_director %>
+                    </td>
+                    <td>
+                        <%= song.singer %>
+                    </td>
+                    <% if (song.Actor !== undefined) { %>
+                        <td>
+                            <%= song.Actor %>
+                        </td>
+                        <% } %>
+                            <% if (song.Actress !== undefined) { %>
+                                <td>
+                                    <%= song.Actress %>
+                                </td>
+                                <% } %>
+                                    <td>
+                                        <form style="display: inline-block;" action="/delete/<%= song._id %>" method="POST">
+                                            <button type="submit">Delete</button>
+                                        </form>
+                                        <form style="display: inline-block;" action="/edit/<%= song._id %>" method="GET">
+                                            <button type="submit">Edit</button>
+                                        </form>
+                                    </td>
+                </tr>
+                <% }); %>
+        </table>
+        <% } else { %>
+            <p>No songs found</p>
+            <% } %>
+</body>
+
+</html>

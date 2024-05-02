@@ -1,0 +1,87 @@
+form {
+    width: 500px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+td {
+    padding: 5px;
+    background-color: #add8e6;
+    border: 1px solid #ddd;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="file"] {
+    margin-top: 20px;
+}
+
+input[type="button"],
+input[type="reset"] {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="button"]:hover {
+    background-color: #45a049;
+}
+
+input[type="reset"] {
+    background-color: #f44336;
+}
+
+input[type="reset"]:hover {
+    background-color: #e53935;
+}
+
+#clickme {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+#clickme:hover {
+    background-color: #45a049;
+}
+
+#resetdiv {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-top: 20px;
+    background-color: #f44336;
+    color: white;
+    cursor: pointer;
+}
+
+#resetdiv:hover {
+    background-color: #e53935;
+}
